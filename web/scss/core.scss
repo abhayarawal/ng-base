@@ -1,0 +1,298 @@
+/* css foundation */
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    margin: 0;
+    font: 16px/1 sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote,
+figure,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+}
+main,
+li {
+    display: block;
+}
+h1,
+h2,
+h3,
+h4 {
+    font-size: inherit;
+}
+strong {
+    font-weight: bold;
+}
+a,
+button {
+    color: inherit;
+    transition: .3s;
+}
+a {
+    text-decoration: none;
+}
+button {
+    overflow: visible;
+    border: 0;
+    font: inherit;
+    -webkit-font-smoothing: inherit;
+    letter-spacing: inherit;
+    background: none;
+    cursor: pointer;
+}
+::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+:focus {
+    outline: 0;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+
+/* grid system */
+$wrapper: 100%;
+$gutter: 1rem;
+
+@mixin row($inside: false) {
+	
+	@if($inside == true)
+	{
+		margin-left: -$gutter/2;
+		margin-right: -$gutter/2;
+	}
+	@else
+	{
+		width: 100%;
+		max-width: $wrapper;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	&:before, &:after
+	{
+		content: '';
+		display: table;
+	}
+	
+	&:after
+	{
+		clear: both;
+	}
+}
+
+@mixin col($width: 1, $padding: true)
+{
+	float: left;
+  width: percentage($width);
+  
+	@if($padding == true) 
+	{
+    padding-left: $gutter/2;
+    padding-right: $gutter/2;
+  }
+}
+
+@mixin push($width: 0) 
+{
+  position: relative;
+  left: percentage($width);
+}
+
+@mixin pull($width: 0)
+{
+  position: relative;
+  right: percentage($width);
+}
+
+/* Easy breakpoint mixin */
+$brk-sm: 500px;
+$brk-md: 768px;
+$brk-lg: 992px;
+$brk-xlg: 1200px;
+
+@mixin mq($value) {
+  @media only screen and (min-width: $value) {
+    @content;
+  }
+}
+
+/* placeholders */
+%negate-ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+/* hard reset */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.row
+{
+	@include row(true);
+}
+
+/* layout */
+html, body
+{
+	display: block;
+	position: relative;
+}
+
+@mixin opacity($opacity)
+{
+	opacity: $opacity;
+	filter: alpha(opacity=($opacity * 100));
+}
+
+@mixin font-size($size) {
+	font-size:$size;
+	font-size: ($size / 16px) * 1rem;
+}
+
+@mixin render($property, $args...) {
+  -webkit-#{$property}: $args;
+  -moz-#{$property}: $args;
+  -o-#{$property}: $args;
+  -ms-#{$property}: $args;
+  #{$property}: $args;
+}
+
+@mixin transition($args...) {
+  @include render(transition, $args);
+}
+
+@mixin border-radius($args...) {
+	@include render(border-radius, $args);
+}
+
+@mixin placeholder($color) {
+	::-webkit-input-placeholder {
+   color: $color;
+	}
+	:-moz-placeholder { /* Firefox 18- */
+		 color: $color;  
+	}
+	::-moz-placeholder {  /* Firefox 19+ */
+		 color: $color;  
+	}
+	:-ms-input-placeholder {  
+		 color: $color;  
+	}
+}
+
+@mixin transform($args...) {
+	@include render(transform, $args);
+}
+
+@mixin box-shadow( $h: 10px , $v: 10px , $b: 0px , $s: 0px , $c: #000000 )
+{
+	-webkit-box-shadow: $h $v $b $s $c;
+	-moz-box-shadow: $h $v $b $s $c;
+	box-shadow: $h $v $b $s $c;
+ }
+
+@mixin animate($name, $duration, $fn, $delay: 0s) {
+	@include render(animation-name, $name);
+	@include render(animation-duration, $duration);
+	@include render(animation-timing-function, $fn);
+	@include render(animation-delay, $delay);
+}
+
+@mixin bg-left-right($lcolor, $rcolor) {
+	background: $lcolor;
+	background-repeat: repeat-y;
+  background: -webkit-gradient(linear, left top, right top, from($rcolor), to($lcolor));
+  background: -webkit-linear-gradient(left, $lcolor, $rcolor);
+  background: -moz-linear-gradient(left, $lcolor, $rcolor);
+  background: -ms-linear-gradient(left, $lcolor, $rcolor);
+  background: -o-linear-gradient(left, $lcolor, $rcolor);
+}
+
+@mixin bg-top-bottom($tcolor, $bcolor) {
+	background-repeat: repeat-x;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($bcolor), to($tcolor));
+  background: -webkit-linear-gradient(top, $tcolor, $bcolor);
+  background: -moz-linear-gradient(top, $tcolor, $bcolor);
+  background: -ms-linear-gradient(top, $tcolor, $bcolor);
+  background: -o-linear-gradient(top, $tcolor, $bcolor);
+}
+
+/* styling */
+$heading-font: 'Roboto', sans-serif;
+$base-font: 'Roboto', sans-serif;
+$font-size: 13px;
+
+$border-color: #e7ddcf;
+
+body
+{
+	font: 100%/1.6 $base-font;
+  margin: 0 auto; 
+  text-align: left; 
+	font-weight: 400;
+	font-size: $font-size;
+	background: #fff;
+	color: #23282e;
+	letter-spacing: 0.05em;
+	position: relative;
+	padding: 0 25px;
+}
+
+strong, b
+{
+	font-weight: 500;
+}
+
+%heading
+{
+	font-family: $heading-font;
+	font-style: normal;
+	text-transform: none;
+	font-weight: 300;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	@extend %heading;
+}
+
+h1 { line-height: 1.2;  letter-spacing: 0.01rem;}
+h2 { line-height: 1.25; letter-spacing: 0.01rem; }
+h3 { line-height: 1.3;  letter-spacing: 0.01rem; }
+h4 { line-height: 1.35; letter-spacing: 0.01rem; }
+h5 { line-height: 1.5;  letter-spacing: 0.01rem; }
+h6 { line-height: 1.6;  letter-spacing: 0.01rem; }
+
+@media only screen and (min-width: 42em) {	
+  h1 { font-size: 2.6rem; }
+	h2 { font-size: 2.1rem; }
+	h3 { font-size: 1.7rem; }
+	h4 { font-size: 1.5rem; }
+	h5 { font-size: 1.2rem; }
+	h6 { font-size: 1rem; }
+}

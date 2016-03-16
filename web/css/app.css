@@ -1,0 +1,151 @@
+/* css foundation */
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font: 16px/1 sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; }
+
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote,
+figure,
+ol,
+ul {
+  margin: 0;
+  padding: 0; }
+
+main,
+li {
+  display: block; }
+
+h1,
+h2,
+h3,
+h4 {
+  font-size: inherit; }
+
+strong {
+  font-weight: bold; }
+
+a,
+button {
+  color: inherit;
+  transition: .3s; }
+
+a {
+  text-decoration: none; }
+
+button {
+  overflow: visible;
+  border: 0;
+  font: inherit;
+  -webkit-font-smoothing: inherit;
+  letter-spacing: inherit;
+  background: none;
+  cursor: pointer; }
+
+::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+:focus {
+  outline: 0; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 0; }
+
+/* grid system */
+/* Easy breakpoint mixin */
+/* placeholders */
+/* hard reset */
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+.row {
+  margin-left: -0.5rem;
+  margin-right: -0.5rem; }
+  .row:before, .row:after {
+    content: '';
+    display: table; }
+  .row:after {
+    clear: both; }
+
+/* layout */
+html, body {
+  display: block;
+  position: relative; }
+
+/* styling */
+body {
+  font: 100%/1.6 "Roboto", sans-serif;
+  margin: 0 auto;
+  text-align: left;
+  font-weight: 400;
+  font-size: 13px;
+  background: #fff;
+  color: #23282e;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding: 0 25px; }
+
+strong, b {
+  font-weight: 500; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  text-transform: none;
+  font-weight: 300;
+  margin: 0;
+  padding: 0; }
+
+h1 {
+  line-height: 1.2;
+  letter-spacing: 0.01rem; }
+
+h2 {
+  line-height: 1.25;
+  letter-spacing: 0.01rem; }
+
+h3 {
+  line-height: 1.3;
+  letter-spacing: 0.01rem; }
+
+h4 {
+  line-height: 1.35;
+  letter-spacing: 0.01rem; }
+
+h5 {
+  line-height: 1.5;
+  letter-spacing: 0.01rem; }
+
+h6 {
+  line-height: 1.6;
+  letter-spacing: 0.01rem; }
+
+@media only screen and (min-width: 42em) {
+  h1 {
+    font-size: 2.6rem; }
+  h2 {
+    font-size: 2.1rem; }
+  h3 {
+    font-size: 1.7rem; }
+  h4 {
+    font-size: 1.5rem; }
+  h5 {
+    font-size: 1.2rem; }
+  h6 {
+    font-size: 1rem; } }
